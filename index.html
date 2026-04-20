@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đạo Đức AI - Khai thác sức mạnh AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; overflow: hidden; }
+        
+        .page { display: none; animation: fadeIn 0.5s ease-out; }
+        .page.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .sidebar-link.active { 
+            background-color: #ecfdf5; 
+            color: #059669; 
+            border-right: 4px solid #10b981; 
+            font-weight: 600;
+        }
+
+        /* Start Screen Styles */
+        #start-screen { transition: opacity 0.8s ease-in-out, visibility 0.8s; }
+        .bg-image-hero { transition: filter 0.5s ease; }
+        #btn-start:hover ~ .bg-image-hero { filter: blur(10px) brightness(0.7); }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <!-- 1. MÀN HÌNH BẮT ĐẦU (START SCREEN) -->
+    <div id="start-screen" class="fixed inset-0 z-[100] flex items-center justify-center bg-black overflow-hidden">
+        <div class="relative z-20 text-center px-4">
+            <button id="btn-start" onclick="enterWebsite()" class="group relative px-12 py-5 bg-white/10 backdrop-blur-md border border-white/30 text-white font-bold text-2xl rounded-full hover:bg-emerald-600 hover:border-emerald-500 transition-all duration-300 shadow-2xl active:scale-95">
+                BẮT ĐẦU TRẢI NGHIỆM
+                <div class="absolute -inset-1 bg-emerald-500 rounded-full blur opacity-0 group-hover:opacity-30 transition"></div>
+            </button>
+            <p class="text-white/70 mt-6 text-lg tracking-widest font-light uppercase">Khai thác sức mạnh AI, giữ vững bản sắc tư duy</p>
+        </div>
+        <!-- Thay link ảnh Start Screen của bạn ở đây -->
+        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2000" class="bg-image-hero absolute inset-0 w-full h-full object-cover" alt="Hero">
+        <div class="absolute inset-0 bg-black/40 z-10"></div>
+    </div>
+
+    <!-- 2. GIAO DIỆN CHÍNH -->
+    <div id="main-layout" class="flex h-screen overflow-hidden opacity-0 transition-opacity duration-1000">
+        
+        <!-- SIDEBAR -->
+        <aside class="w-72 bg-white border-r border-slate-200 flex flex-col shrink-0 shadow-sm">
+            <div class="p-8">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-emerald-500 rounded-xl flex items-center justify-center shadow-lg shadow-blue-200">
+                        <i class="fa-solid fa-microchip text-white text-lg"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold tracking-tight text-slate-900 leading-none">ĐẠO ĐỨC AI</h1>
+                        <span class="text-[10px] text-emerald-600 font-bold uppercase tracking-widest">Digital Ethics</span>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="flex-1 px-4 space-y-1">
+                <button onclick="showPage('page1', this)" class="sidebar-link active w-full flex items-center px-4 py-3.5 text-slate-600 rounded-lg transition-all hover:bg-slate-50">
+                    <i class="fa-solid fa-leaf mr-3 w-5"></i> 1. Giới thiệu
+                </button>
+                <button onclick="showPage('page2', this)" class="sidebar-link w-full flex items-center px-4 py-3.5 text-slate-600 rounded-lg transition-all hover:bg-slate-50">
+                    <i class="fa-solid fa-book mr-3 w-5"></i> 2. Cơ sở lý thuyết
+                </button>
+                <button onclick="showPage('page3', this)" class="sidebar-link w-full flex items-center px-4 py-3.5 text-slate-600 rounded-lg transition-all hover:bg-slate-50">
+                    <i class="fa-solid fa-compass mr-3 w-5"></i> 3. Thực trạng & Giải pháp
+                </button>
+                <button onclick="showPage('page4', this)" class="sidebar-link w-full flex items-center px-4 py-3.5 text-slate-600 rounded-lg transition-all hover:bg-slate-50">
+                    <i class="fa-solid fa-lightbulb mr-3 w-5"></i> 4. Ứng dụng & Trải nghiệm
+                </button>
+            </nav>
+
+            <div class="p-6 border-t border-slate-100 text-center">
+                <p class="text-[11px] text-emerald-600 font-bold uppercase tracking-widest">Dự án giáo dục số 2024</p>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="flex-1 overflow-y-auto">
+            <div class="max-w-5xl mx-auto px-8 py-12">
+
+                <!-- TRANG 1 -->
+                <section id="page1" class="page active">
+                    <div class="mb-10">
+                        <span class="text-emerald-600 font-bold text-sm uppercase tracking-widest">Chào mừng</span>
+                        <h2 class="text-4xl font-extrabold text-slate-900 mt-2">Phần giới thiệu</h2>
+                    </div>
+                    <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-200 mb-8">
+                        <h3 class="text-xl font-bold text-blue-600 mb-6 flex items-center italic">1. Câu chuyện của chúng tôi</h3>
+                        <p class="text-slate-600 leading-relaxed text-[17px] mb-4">Trong môi trường giáo dục hiện đại, các công cụ trí tuệ nhân tạo đang dần trở thành người bạn đồng hành quen thuộc của mỗi sinh viên. Chúng ta có thể dễ dàng tìm kiếm ý tưởng, tóm tắt tài liệu hay giải đáp thắc mắc chỉ trong vài giây. Tuy nhiên, ranh giới giữa việc "tận dụng công nghệ để học tập hiệu quả" và "đánh mất sự trung thực học thuật" lại vô cùng mong manh.</p>
+                        <p class="text-slate-600 leading-relaxed text-[17px]">Làm sao để khai thác sức mạnh của máy móc mà vẫn giữ được tư duy phản biện độc lập và ý thức trách nhiệm? Đó chính là trăn trở lớn nhất khiến chúng tôi quyết định xây dựng và phát triển dự án này.</p>
+                    </div>
+                    <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-200">
+                        <h3 class="text-xl font-bold text-emerald-600 mb-6 italic">2. Sứ mệnh hướng đến người học</h3>
+                        <p class="text-slate-600 leading-relaxed text-[17px] mb-4">Không né tránh, không cấm đoán tiêu cực. Trang thông tin này được lập ra với mục tiêu đồng hành cùng người học trong kỷ nguyên số. Chúng tôi mong muốn xây dựng một không gian nơi mọi người được trang bị đầy đủ những kỹ năng để sử dụng công nghệ một cách minh bạch, an toàn và có đạo đức.</p>
+                        <p class="text-slate-600 leading-relaxed text-[17px]">Hơn cả việc học cách dùng một công cụ tự động, đây là nơi chúng ta cùng nhau rèn luyện ý thức bảo vệ quyền riêng tư cá nhân, nhận diện định kiến và tôn trọng sự công bằng – những phẩm chất cốt lõi không thể thiếu của một công dân tử tế trong thời đại số.</p>
+                    </div>
+                </section>
+
+                <!-- TRANG 2: CƠ SỞ LÝ THUYẾT (CÓ THÊM HÌNH ẢNH MỚI) -->
+                <section id="page2" class="page">
+                    <div class="mb-10">
+                        <span class="text-blue-600 font-bold text-sm uppercase tracking-widest text-center block">Hệ thống tri thức</span>
+                        <h2 class="text-3xl font-extrabold text-slate-900 mt-2 uppercase flex items-center justify-center">
+                            <i class="fa-solid fa-book-open mr-4 text-blue-600"></i>
+                            CƠ SỞ LÝ THUYẾT: ĐẠO ĐỨC TRÍ TUỆ NHÂN TẠO TRONG MÔI TRƯỜNG HỌC TẬP
+                        </h2>
+                    </div>
+
+                    <div class="space-y-8">
+                        <div class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm">
+                            <h3 class="text-lg font-bold text-slate-900 border-b pb-4 mb-6 italic">1. Các khái niệm nền tảng về công nghệ và chuẩn mực ứng xử</h3>
+                            <div class="grid md:grid-cols-2 gap-8">
+                                <div class="bg-blue-50/50 p-6 rounded-xl border border-blue-100">
+                                    <h4 class="font-bold text-blue-700 mb-3 uppercase text-xs tracking-widest">Sự hiện diện của công cụ tự động:</h4>
+                                    <p class="text-sm leading-relaxed text-slate-600">Ngày nay, các hệ thống thuật toán thông minh không còn là khái niệm xa vời mà đã trở thành trợ lý đắc lực của học sinh, sinh viên. Từ việc tra cứu tài liệu, tóm tắt những quyển sách dày cộp, đến việc gợi ý hệ thống ý chính cho một bài luận phức tạp, công nghệ đang làm thay đổi hoàn toàn phương pháp tiếp thu kiến thức truyền thống.</p>
+                                </div>
+                                <div class="bg-emerald-50/50 p-6 rounded-xl border border-emerald-100">
+                                    <h4 class="font-bold text-emerald-700 mb-3 uppercase text-xs tracking-widest">Đạo đức số trong không gian học đường:</h4>
+                                    <p class="text-sm leading-relaxed text-slate-600">Đây là hệ thống các quy tắc, chuẩn mực ứng xử nhằm hướng dẫn con người sử dụng công nghệ một cách có trách nhiệm. Trong học tập, đạo đức số yêu cầu người học phải xác định rõ ranh giới giữa việc "nhờ máy móc hỗ trợ" và "để máy móc học thay", đảm bảo mọi sản phẩm tri thức được tạo ra đều mang dấu ấn và sự lao động chân chính của con người.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- MỤC 2: TÁC ĐỘNG (THÊM ẢNH Ở ĐÂY) -->
+                        <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm overflow-hidden">
+                            <h3 class="text-lg font-bold text-slate-900 border-b pb-4 mb-6 flex items-center italic">
+                                <span class="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mr-3 text-xs">2</span>
+                                Tác động của công nghệ đến tư duy và tâm lý người học
+                            </h3>
+                            
+                            <div class="flex flex-col lg:flex-row gap-8 items-start">
+                                <!-- Văn bản nội dung -->
+                                <div class="flex-1 space-y-6">
+                                    <div class="p-5 bg-slate-50 rounded-2xl border-l-4 border-emerald-400">
+                                        <p class="text-[16px] text-slate-600 leading-relaxed italic"><strong class="text-slate-900">Tâm lý ỷ lại và rủi ro thui chột tư duy phản biện:</strong> Khi có một công cụ sẵn sàng đưa ra câu trả lời hoàn chỉnh chỉ trong vài giây, tâm lý chung của người học là dễ dàng chấp nhận và lười đào sâu suy nghĩ. Việc sao chép mù quáng mà không qua quá trình nghiền ngẫm, đối chiếu sẽ làm mất đi khả năng tự phân tích và giải quyết vấn đề. Về lâu dài, điều này tạo ra tâm lý thụ động, chỉ biết nhận thông tin một chiều thay vì rèn luyện óc sáng tạo.</p>
+                                    </div>
+                                    <div class="p-5 bg-slate-50 rounded-2xl border-l-4 border-blue-400">
+                                        <p class="text-[16px] text-slate-600 leading-relaxed italic"><strong class="text-slate-900">Mối quan hệ biện chứng giữa con người và công cụ:</strong> Xét đến cùng, mọi máy móc dù thông minh đến đâu cũng chỉ là phương tiện, là tư liệu do con người tạo ra. Con người mới là chủ thể của quá trình nhận thức và thực tiễn. Do đó, người học phải luôn giữ vững vị trí làm chủ, dùng công cụ để mở rộng tầm nhìn, chứ tuyệt đối không được để hệ thống tự động thao túng tư duy hay thay thế hoàn toàn tiếng nói cá nhân của mình trong các công trình nghiên cứu.</p>
+                                    </div>
+                                </div>
+
+                                <!-- HÌNH ẢNH 4 Ô MỚI THÊM -->
+                                <div class="w-full lg:w-80 shrink-0">
+                                    <div class="rounded-2xl border border-slate-200 p-2 bg-white shadow-lg rotate-2 hover:rotate-0 transition-transform duration-500">
+                                        <!-- Thay link ảnh 4 ô của bạn vào đây -->
+                                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4628c6750?q=80&w=800" class="rounded-xl w-full h-auto" alt="AI Ethics Impact Grid">
+                                        <div class="p-3 text-center">
+                                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Biểu đồ tác động đa chiều của AI</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-900 rounded-3xl p-8 text-white shadow-xl">
+                            <h3 class="text-xl font-bold mb-6 text-emerald-400 italic">3. Tiêu chuẩn và Trách nhiệm của "Công dân số" thế hệ mới</h3>
+                            <div class="space-y-6 text-slate-300 text-sm leading-relaxed">
+                                <p><b class="text-white text-base block mb-1 underline decoration-emerald-500/50">Giữ vững tính liêm chính học thuật:</b> Đây là nguyên tắc sống còn. Việc sử dụng văn bản do hệ thống máy tính tự sinh ra rồi nhận là chất xám của mình không khác gì hành vi gian lận. Sinh viên cần học cách trích dẫn rõ ràng nguồn gốc nếu có tham khảo ý tưởng từ các phần mềm thông minh, đồng thời phải tự chịu trách nhiệm hoàn toàn về độ chính xác của nội dung mình nộp.</p>
+                                <p><b class="text-white text-base block mb-1 underline decoration-emerald-500/50">Ý thức bảo mật thông tin và thượng tôn pháp luật:</b> Mọi dữ liệu chúng ta nhập vào hệ thống mở đều có thể bị thu thập để huấn luyện máy móc. Người học cần được trang bị ý thức tự vệ: tuyệt đối không đưa thông tin cá nhân, dữ liệu nội bộ của trường học hay các câu chuyện đời tư nhạy cảm vào các khung trò chuyện tự động. Đây vừa là cách bảo vệ quyền cơ bản của bản thân, vừa là trách nhiệm tuân thủ các quy định về an toàn an ninh mạng.</p>
+                                <p><b class="text-white text-base block mb-1 underline decoration-emerald-500/50">Nhận diện định kiến và bảo vệ sự công bằng:</b> Các hệ thống máy học được huấn luyện từ kho dữ liệu khổng lồ của nhân loại, vốn đã chứa đựng vô vàn định kiến chủ quan về giới tính, màu da, hay giai cấp xã hội. Một công dân có trách nhiệm phải biết hoài nghi, biết dùng lăng kính khách quan để phát hiện và gạt bỏ những thông tin thiên lệch, từ đó xây dựng một thế giới quan đa chiều, công bằng và tôn trọng sự khác biệt.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TRANG 3: THỰC TRẠNG & GIẢI PHÁP -->
+                <section id="page3" class="page">
+                    <h2 class="text-3xl font-extrabold text-slate-900 mb-10 text-center uppercase tracking-tighter">THỰC TRẠNG VÀ GIẢI PHÁP: LÀM CHỦ CÔNG NGHỆ TRONG HỌC TẬP</h2>
+                    <div class="space-y-12">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center"><i class="fa-solid fa-triangle-exclamation text-amber-500 mr-3"></i> 1. Những vấn đề nhức nhối hiện nay</h3>
+                            <div class="grid md:grid-cols-2 gap-6 italic">
+                                <div class="bg-white p-6 rounded-2xl border-l-4 border-blue-500 shadow-sm">
+                                    <h4 class="font-bold text-slate-800 mb-2">Khủng hoảng niềm tin & gian lận:</h4>
+                                    <p class="text-sm text-slate-600">Việc người học lạm dụng hệ thống thuật toán để làm thay bài tập, viết hộ tiểu luận rồi nộp dưới tên mình vi phạm nghiêm trọng sự trung thực học thuật.</p>
+                                </div>
+                                <div class="bg-white p-6 rounded-2xl border-l-4 border-blue-500 shadow-sm">
+                                    <h4 class="font-bold text-slate-800 mb-2">Hội chứng lệ thuộc tâm lý:</h4>
+                                    <p class="text-sm text-slate-600">Thay vì tự đọc tài liệu, nhiều bạn trẻ giao phó hoàn toàn cho máy móc, dần triệt tiêu thói quen tư duy sâu, làm mai một khả năng phân tích logic.</p>
+                                </div>
+                                <div class="bg-white p-6 rounded-2xl border-l-4 border-blue-500 shadow-sm">
+                                    <h4 class="font-bold text-slate-800 mb-2">Rủi ro rò rỉ dữ liệu cá nhân:</h4>
+                                    <p class="text-sm text-slate-600">Vô tư nhập dữ liệu nghiên cứu chưa công bố, thông tin cá nhân vào khung trò chuyện tự động dẫn đến nguy cơ mất quyền kiểm soát dữ liệu.</p>
+                                </div>
+                                <div class="bg-white p-6 rounded-2xl border-l-4 border-blue-500 shadow-sm">
+                                    <h4 class="font-bold text-slate-800 mb-2">Bị dẫn dắt bởi thông tin sai lệch:</h4>
+                                    <p class="text-sm text-slate-600">Máy móc chỉ lắp ghép từ ngữ theo xác suất, tin tưởng tuyệt đối có thể khiến người học vô tình tiếp thu, lan truyền kiến thức sai lệch.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-emerald-600 rounded-3xl p-8 text-white shadow-2xl">
+                            <h3 class="text-2xl font-bold mb-8 flex items-center"><i class="fa-solid fa-shield-check mr-3"></i> 2. Giải pháp hướng đến người học</h3>
+                            <div class="grid gap-6">
+                                <div class="bg-white/10 p-5 rounded-xl border border-white/20">
+                                    <h4 class="font-bold mb-2 italic">Rèn luyện "Bộ lọc phản biện" cá nhân:</h4>
+                                    <p class="text-sm text-emerald-50 leading-relaxed">Biến máy móc thành "người phản biện", chứ không phải "người ra quyết định". Kiểm chứng dữ liệu bằng giáo trình và nguồn chính thống.</p>
+                                </div>
+                                <div class="bg-white/10 p-5 rounded-xl border border-white/20">
+                                    <h4 class="font-bold mb-2 italic">Nguyên tắc "Học cùng, không học thay":</h4>
+                                    <p class="text-sm text-emerald-50 leading-relaxed">Xây dựng ranh giới rõ ràng. Chỉ dùng AI để tìm ý tưởng, tóm tắt. Giai đoạn viết, lập luận bắt buộc phải do tư duy con người thực hiện.</p>
+                                </div>
+                                <div class="bg-white/10 p-5 rounded-xl border border-white/20">
+                                    <h4 class="font-bold mb-2 italic">Thiết lập "hàng rào" bảo vệ dữ liệu:</h4>
+                                    <p class="text-sm text-emerald-50 leading-relaxed">Làm mờ hoặc xóa bỏ thông tin định danh nhạy cảm. Coi các nền tảng AI là không gian công cộng, không lưu trữ bí mật cá nhân.</p>
+                                </div>
+                                <div class="bg-white/10 p-5 rounded-xl border border-white/20">
+                                    <h4 class="font-bold mb-2 italic">Bồi dưỡng ý thức đạo đức xã hội:</h4>
+                                    <p class="text-sm text-emerald-50 leading-relaxed">Rèn luyện nhân cách thông qua thảo luận thực tế. Khi có ý thức tự trọng, bạn sẽ tự biết cách sử dụng công nghệ một cách tử tế và đúng đắn.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TRANG 4: ỨNG DỤNG -->
+                <section id="page4" class="page">
+                    <div class="mb-12 text-center">
+                        <h2 class="text-4xl font-black text-slate-900 uppercase">ỨNG DỤNG THỰC TIỄN VÀ TRẢI NGHIỆM</h2>
+                        <div class="w-24 h-1 bg-emerald-500 mx-auto mt-4 rounded-full"></div>
+                    </div>
+
+                    <div class="bg-white rounded-3xl p-10 border border-slate-200 shadow-sm mb-12">
+                        <h3 class="text-xl font-bold text-blue-600 mb-8 flex items-center italic underline decoration-blue-200">1. Trợ thủ học tập thông minh: Cách ứng dụng hiệu quả</h3>
+                        <p class="text-[17px] text-slate-600 mb-8 leading-relaxed">AI không phải là "người làm hộ", mà là trợ thủ đắc lực nếu biết cách. Bạn có thể ứng dụng vào các mục đích:</p>
+                        <div class="grid md:grid-cols-3 gap-6 mb-8 text-center italic">
+                            <div class="p-6 bg-blue-50 rounded-2xl border border-blue-100">
+                                <h4 class="font-bold text-blue-800 mb-3">Mở rộng ý tưởng</h4>
+                                <p class="text-sm text-slate-500 leading-relaxed">Khơi gợi góc nhìn mới, tạo lập dàn ý chi tiết cho bài thuyết trình.</p>
+                            </div>
+                            <div class="p-6 bg-blue-50 rounded-2xl border border-blue-100">
+                                <h4 class="font-bold text-blue-800 mb-3">Tổng hợp tra cứu</h4>
+                                <p class="text-sm text-slate-500 leading-relaxed">Tóm tắt tài liệu học thuật dài, tìm khái niệm cốt lõi nhanh chóng.</p>
+                            </div>
+                            <div class="p-6 bg-blue-50 rounded-2xl border border-blue-100">
+                                <h4 class="font-bold text-blue-800 mb-3">Hoàn thiện hình thức</h4>
+                                <p class="text-sm text-slate-500 leading-relaxed">Kiểm tra lỗi chính tả, ngữ pháp, giúp câu chữ mạch lạc rõ ràng.</p>
+                            </div>
+                        </div>
+                        <div class="bg-emerald-600 text-white p-6 rounded-2xl font-bold flex items-center shadow-xl">
+                            <i class="fa-solid fa-circle-check text-2xl mr-4"></i>
+                            <p>Công nghệ giúp nâng cao hiệu suất, không thay thế tư duy độc lập của chính bạn!</p>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-10">
+                        <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm">
+                            <h3 class="text-xl font-bold text-emerald-600 mb-6 flex items-center italic">2. Thử thách bản lĩnh: Trò chơi "Công dân số thông thái"</h3>
+                            <div class="text-sm text-slate-600 space-y-4 italic leading-relaxed">
+                                <p>Nhằm giúp bạn củng cố kiến thức về đạo đức công nghệ sinh động, chúng tôi đã thiết kế trò chơi trắc nghiệm thú vị.</p>
+                                <p><strong>Luật chơi:</strong> Kho tàng 60 câu hỏi tình huống thực tế về trung thực, bản quyền, riêng tư. Mỗi lượt máy tính rút ra 10 câu ngẫu nhiên. Đây là thước đo xem bạn đã nắm vững cách ứng xử văn minh chưa.</p>
+                            </div>
+                        </div>
+                        <div class="bg-gradient-to-br from-blue-700 to-emerald-600 rounded-3xl p-10 text-white text-center flex flex-col justify-center items-center shadow-2xl relative overflow-hidden">
+                            <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+                            <h3 class="text-2xl font-bold mb-6 italic tracking-tight underline">3. Khu vực trải nghiệm trực tiếp</h3>
+                            <p class="text-blue-50 text-sm mb-10 leading-relaxed font-light italic">"Vận dụng kiến thức cẩm nang, giữ cái đầu lạnh phân tích tình huống và đưa ra lựa chọn chính xác nhất. Chúc bạn đạt điểm tuyệt đối!"</p>
+                            <button class="bg-white text-blue-700 font-black px-12 py-4 rounded-full text-xl shadow-2xl hover:scale-105 transition-transform active:scale-95">BẮT ĐẦU NGAY</button>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Vào website
+        function enterWebsite() {
+            const ss = document.getElementById('start-screen');
+            const ml = document.getElementById('main-layout');
+            ss.style.opacity = '0';
+            setTimeout(() => {
+                ss.style.display = 'none';
+                ml.classList.remove('opacity-0');
+                document.body.style.overflow = 'auto';
+            }, 800);
+        }
+
+        // Chuyển trang
+        function showPage(pageId, btn) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            document.querySelectorAll('.sidebar-link').forEach(link => link.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelector('main').scrollTop = 0;
+        }
+    </script>
+</body>
+</html>
